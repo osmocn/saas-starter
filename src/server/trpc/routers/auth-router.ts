@@ -10,9 +10,8 @@ export const authRouter = createTRPCRouter({
   signUp: publicProcedure
     .input(signupFormSchema)
     .mutation(async ({ input: values }) => {
-      console.log("SignUp values:", values);
       return await auth.api.signUpEmail({
-        body: { isDeleted: false, ...values },
+        body: { ...values, isDeleted: false },
       });
     }),
 
